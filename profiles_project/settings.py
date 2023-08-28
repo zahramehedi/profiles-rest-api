@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework', #django rest framework that we installed earlier
     'rest_framework.authtoken', #allows us to use the authentication token that comes from the rest framework
-    'profiles_api', 
+    'profiles_api',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +121,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'profiles_api.UserProfile' #Represents the model used as the django user model. Tells Django to look at our profiles api app and find the model called user profiles
