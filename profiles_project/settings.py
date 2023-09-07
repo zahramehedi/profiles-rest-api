@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!e=r%k$)jpn4(=jr98)j5oi$6*yxbw!1+plg3*(v&+ih4j(q^q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG',1)))
 
 ALLOWED_HOSTS = []
 
@@ -123,3 +123,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile' #Represents the model used as the django user model. Tells Django to look at our profiles api app and find the model called user profiles
+
+STATIC_ROOT ='static/'
