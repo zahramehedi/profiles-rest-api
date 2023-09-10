@@ -25,7 +25,10 @@ SECRET_KEY = '!e=r%k$)jpn4(=jr98)j5oi$6*yxbw!1+plg3*(v&+ih4j(q^q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG',1)))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+                'ec2-3-143-204-212.us-east-2.compute.amazonaws.com',
+                '127.0.0.1'
+] #enable access via specific domain names
 
 
 # Application definition
