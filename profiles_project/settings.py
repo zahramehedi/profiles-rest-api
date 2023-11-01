@@ -26,8 +26,11 @@ SECRET_KEY = '!e=r%k$)jpn4(=jr98)j5oi$6*yxbw!1+plg3*(v&+ih4j(q^q'
 DEBUG = bool(int(os.environ.get('DEBUG',1)))
 
 ALLOWED_HOSTS = [
-                'ec2-3-143-204-212.us-east-2.compute.amazonaws.com',
-                '127.0.0.1'
+                'ec2-13-58-120-15.us-east-2.compute.amazonaws.com',
+                '127.0.0.1',
+                '0.0.0.0',
+                'localhost',
+                '10.0.2.2',
 ] #enable access via specific domain names
 
 
@@ -126,5 +129,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile' #Represents the model used as the django user model. Tells Django to look at our profiles api app and find the model called user profiles
-
 STATIC_ROOT ='static/'
