@@ -69,3 +69,11 @@ class ProfileFeedItem(models.Model):
     def __str__(self):
         """Return the model as a string"""
         return self.status_text
+
+class DataPoint(models.Model):
+     user_profile = models.ForeignKey(
+         settings.AUTH_USER_MODEL,
+         on_delete=models.CASCADE
+     )
+     bullet_group = models.FloatField()
+     point_calc = models.FloatField()

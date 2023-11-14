@@ -39,3 +39,11 @@ class ProfileFeedItemSerializer(serializers.ModelSerializer):
         model = models.ProfileFeedItem
         fields = ('id', 'user_profile', 'status_text', 'created_on')
         extra_kwargs = {'user_profile': {'read_only': True}}
+
+class DataPointSerializer(serializers.ModelSerializer):
+    """Serializes data point items"""
+
+    class Meta:
+        model = models.DataPoint
+        fields = ('id', 'user_profile', 'bullet_group', 'point_calc')
+        extra_kwargs = {'user_profile': {'read_only': True}}

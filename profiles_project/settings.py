@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', #django rest framework that we installed earlier
-    'rest_framework.authtoken', #allows us to use the authentication token that comes from the rest framework
+    'rest_framework', #django rest framework that was installed earlier
+    'rest_framework.authtoken',
+    #'dj_rest_auth', #allows us to use the authentication token that comes from the rest framework
     'profiles_api',
 ]
 

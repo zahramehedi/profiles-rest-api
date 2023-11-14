@@ -7,10 +7,11 @@ from rest_framework import filters
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 from rest_framework.permissions import IsAuthenticated
-
+from django.views import View
 from profiles_api import serializers
 from profiles_api import models
 from profiles_api import permissions
+#from profiles_api.python import bullet_coords
 
 
 class HelloApiView(APIView):
@@ -120,6 +121,26 @@ class UserProfileFeedViewSet(viewsets.ModelViewSet):
     authentication_classes = (TokenAuthentication,)
     serializer_class = serializers.ProfileFeedItemSerializer
     queryset = models.ProfileFeedItem.objects.all()
+    permission_classes = (permissions.UpdateOwnStatus,IsAuthenticated)
+
+    def perform_create(self,serializer):
+        """Sets the user profile to the logged in user"""
+        serializer.save(user_profile=self.request.user)
+
+class SessionDataView(View):
+    def get(self, request):
+        # Your view logic here
+        session_data = {
+            'user_id': request.session.get('user_id'),
+            'username': request.session.get('username'),
+            # Add more session data as needed
+        }
+        return JsonResponse(session_data)
+
+class DataPointViewSet(viewsets.ModelViewSet):
+    authentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.DataPointSerializer
+    queryset = models.DataPoint.objects.all()
     permission_classes = (permissions.UpdateOwnStatus,IsAuthenticated)
 
     def perform_create(self,serializer):
