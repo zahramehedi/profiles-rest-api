@@ -15,7 +15,7 @@ router.register('datapoint', views.DataPointViewSet)
 urlpatterns = [
     path('hello-view/', views.HelloApiView.as_view()),
     path('login/', views.UserLoginApiView.as_view()),
-    path('datapoint/', views.SessionDataView.as_view(), name='sessiondata'),
+    #path('datapoint/', views.SessionDataView.as_view(), name='sessiondata'),
     path('', include(router.urls))
 
 ]
