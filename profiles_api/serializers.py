@@ -45,5 +45,5 @@ class DataPointSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.DataPoint
-        fields = ('id', 'user_profile', 'bullet_group', 'point_calc')
+        fields = ('id', 'user_profile', 'bullet_group', 'point_calc', 'image_saved')
         extra_kwargs = {'user_profile': {'read_only': True}}

@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 from django.conf import settings
+import datetime
 
 class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
@@ -70,6 +71,15 @@ class ProfileFeedItem(models.Model):
         """Return the model as a string"""
         return self.status_text
 
+def get_upload_path(instance, filename):
+    # Assuming your model has an 'id' field
+    instance_id = instance.id
+
+    # Create a new filename using the instance ID
+    new_filename = f"{datetime.datetime.now().time()}_{filename}"
+
+    # Return the full upload path
+    return 'Datapoint Images/'+new_filename
 
 
 class DataPoint(models.Model):
@@ -79,3 +89,4 @@ class DataPoint(models.Model):
      )
      bullet_group = models.FloatField()
      point_calc = models.FloatField()
+     image_saved = models.FileField(default=None, blank=True, null=True, upload_to=get_upload_path)
